@@ -4,7 +4,7 @@ objs := $(addprefix bin/, $(srcs:.c=.o))
 target = bin/out.exe
 cc = x86_64-w64-mingw32-gcc
 cflags = -Wall
-lflags = -lmingw32
+lflags = -lmingw32 -lSDL2main -lSDL2.dll
 
 .PHONY: all
 all: $(target)
@@ -12,7 +12,7 @@ all: $(target)
 
 $(target): $(objs)
 	@echo "linking ..."
-	$(cc) $^ -o $@ -Ldependnecies/lib $(lflags)
+	$(cc) $^ -o $@ -Ldependencies/lib $(lflags)
 
 bin/%.o: %.c
 	@echo "compiling $<"
